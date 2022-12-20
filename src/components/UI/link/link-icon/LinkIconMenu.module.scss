@@ -1,0 +1,36 @@
+@import '../../../../style/color.scss';
+@import '../../../../style/layout.scss';
+
+.myLink {
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 16px;
+    align-items: center;
+    color: $background-color;
+
+    .navText {
+        margin-left: 8px;
+    }
+
+    .navIcon {
+        fill: $regular-text-color;
+    }
+
+    &:hover {
+        transition: color, fill .2s ease-in-out;
+
+        .navIcon {
+            fill: $ui-color;
+        }
+    }
+}
+
+
+.myLink.active {
+    color: $ui-color;
+
+    .navIcon {
+        fill: $ui-color;
+    }
+}
