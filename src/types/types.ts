@@ -13,7 +13,7 @@ export interface ICurrency {
 }
 
 export interface ITicker extends ICurrency {
-    type: string;
+    side: string;
 }
 
 export interface IInputText {
@@ -22,4 +22,12 @@ export interface IInputText {
     autoFocus?: boolean,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
     value: string
+}
+
+export interface IArchive {
+    side: string;
+    price: number;
+    instrument: string;
+    volume: string;
+    timestamp: string;
 }

@@ -17,17 +17,17 @@ export const InputText: FC<IPropsInputText> = ({ props }) => {
         value,
     } = props
     return (
-        <div className={style.container}>
-            <input
-                className={style.myInput}
-                type='text'
-                autoComplete='off'
-                autoFocus={autoFocus || false}
-                placeholder={placeholder}
-                name={name}
-                onChange={changeHandler}
-                value={value}
-            />
-        </div>
+
+        <input
+            className={style.myInput}
+            type='number'
+            autoComplete='off'
+            autoFocus={autoFocus || false}
+            placeholder={placeholder}
+            name={name}
+            onChange={changeHandler}
+            value={value}
+        />
+
     )
 }

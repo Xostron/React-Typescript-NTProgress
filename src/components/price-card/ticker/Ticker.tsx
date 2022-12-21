@@ -37,15 +37,15 @@ export const Ticker: FC = () => {
         setSelect(pairCurrency[0])
     }
 
-    const handlerBuySell = (type: string, name: string, price: number) => {
+    const handlerBuySell = (side: string, name: string, price: number) => {
         setTicker({
-            type: type,
+            side: side,
             name: name,
             price: price,
             coef: 0
         })
         setVisible(!visible)
-        console.log(type, name, price)
+        // console.log(side, name, price)
     }
 
     return (
@@ -62,7 +62,7 @@ export const Ticker: FC = () => {
                 handler={handlerBuySell}
             />
             <MyModal visible={visible} setVisible={setVisible}>
-                <ModalBuySell props={ticker} />
+                {ticker ? <ModalBuySell props={ticker} onClose={setVisible} /> : null}
             </MyModal>
         </div>
     )

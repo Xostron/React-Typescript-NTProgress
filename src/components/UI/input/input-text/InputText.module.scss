@@ -1,23 +1,27 @@
 @import '../../../../style/color.scss';
 @import '../../../../style/layout.scss';
 
-.container {
 
 
-    .myInput {
-        display: flex;
-        text-align: center;
-        width: 100%;
-        outline: none;
-        padding: .25rem;
 
-        color: $regular-text-color;
-        background-color: transparent;
-        font-size: .85rem;
-        border: none;
+.myInput {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    outline: none;
+    padding: .4rem;
+    color: $regular-text-color;
+    background-color: transparent;
+    font-size: 1rem;
+    border: 1px solid $hide-text-color;
+    border-radius: 10px;
 
-        &::placeholder {
-            color: $hide-text-color;
-        }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    &::placeholder {
+        color: $hide-text-color;
     }
 }
