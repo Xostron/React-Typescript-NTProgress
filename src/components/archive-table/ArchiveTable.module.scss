@@ -27,4 +27,9 @@
             color: $alarm-color;
         }
     }
+
+    .noData {
+        margin: 100px auto;
+        color: $hide-text-color;
+    }
 }

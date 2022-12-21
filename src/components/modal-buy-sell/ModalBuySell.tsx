@@ -81,7 +81,7 @@ export const ModalBuySell: FC<IPropsModalBS> = ({ props, onClose }) => {
                 </div>
 
                 <div className={style.buttons}>
-                    <BtnText onClick={handlerCancel}>Cancel</BtnText>
+                    <BtnText color={'gray'} onClick={handlerCancel}>Cancel</BtnText>
                     <BtnText onClick={handlerOK}>OK</BtnText>
                 </div>
 

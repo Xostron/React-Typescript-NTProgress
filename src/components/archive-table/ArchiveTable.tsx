@@ -25,7 +25,7 @@ export const ArchiveTable: FC = () => {
                     </div>
                 )
             }) :
-                <span>Операций с валютой еще не было...</span>
+                <span className={style.noData}>Операций с валютой еще не было...</span>
             }
 
         </div>
