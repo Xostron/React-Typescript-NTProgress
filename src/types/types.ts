@@ -7,7 +7,7 @@ export interface ILink {
 }
 
 export interface ICurrency {
-    name: string;
+    instrument: string;
     price: number;
     coef: number;
 }

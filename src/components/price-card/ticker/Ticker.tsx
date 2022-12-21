@@ -6,41 +6,37 @@ import { ICurrency, ITicker } from '../../../types/types'
 import { MyModal } from '../../UI/modal/MyModal'
 import { ModalBuySell } from '../../modal-buy-sell/ModalBuySell'
 
-
-
 // mock data - валюты
 const currency: ICurrency[] = [
-    { name: 'USD/RUB TOM', price: 68.8750, coef: 5 },
-    { name: 'USD/EUR TOM', price: 0.94162, coef: .15 },
-    { name: 'USD/GBP TOM', price: 0.8219, coef: .11 },
-    { name: 'USD/CNY TOM', price: 6.98, coef: 1 },
-    { name: 'USD/TRY TOM', price: 18.66, coef: 2 },
-    { name: 'USD/CHF TOM', price: 0.9278, coef: .15 },
-    { name: 'RUB/CNY TOM', price: 0.94162, coef: 3 },
+    { instrument: 'USD/RUB TOM', price: 68.8750, coef: 5 },
+    { instrument: 'USD/EUR TOM', price: 0.94162, coef: .15 },
+    { instrument: 'USD/GBP TOM', price: 0.8219, coef: .11 },
+    { instrument: 'USD/CNY TOM', price: 6.98, coef: 1 },
+    { instrument: 'USD/TRY TOM', price: 18.66, coef: 2 },
+    { instrument: 'USD/CHF TOM', price: 0.9278, coef: .15 },
+    { instrument: 'RUB/CNY TOM', price: 0.94162, coef: 3 },
 ]
-// список наименований валют для dropdown (принимает на вход массив строк)
-const options = currency.map((val) => val.name)
+// mock data - для выпадающего списка
+const options = currency.map((val) => val.instrument)
 
-
-
-
+// Компонент выбора инструмента (валюты) и отображение стоимости
 export const Ticker: FC = () => {
-    // Селектор
+    // выбранная валюта из выпадающего списка
     const [select, setSelect] = useState<ICurrency>(currency[0])
     // вызов модального окна
     const [visible, setVisible] = useState<boolean>(false)
-    // данные тикера для модального окна 
+    // данные тикера для модального окна (side, price, instrument)
     const [ticker, setTicker] = useState<ITicker>({} as ITicker)
-
+    // событие для выпадающего списка
     const handlerChange = (option: any) => {
-        let pairCurrency = currency.filter(val => val.name === option)
+        let pairCurrency = currency.filter(val => val.instrument === option)
         setSelect(pairCurrency[0])
     }
-
-    const handlerBuySell = (side: string, name: string, price: number) => {
+    // событие вызова модального окна (формы) для покупки валюты
+    const handlerBuySell = (side: string, instrument: string, price: number) => {
         setTicker({
             side: side,
-            name: name,
+            instrument: instrument,
             price: price,
             coef: 0
         })
@@ -52,11 +48,11 @@ export const Ticker: FC = () => {
         <div className={style.container}>
             <DropdownV1
                 options={options}
-                value={select.name}
+                value={select.instrument}
                 onChange={handlerChange}
             />
             <Price
-                name={select.name}
+                instrument={select.instrument}
                 price={select.price}
                 coef={select.coef}
                 handler={handlerBuySell}

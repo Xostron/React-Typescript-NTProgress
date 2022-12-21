@@ -1,36 +1,36 @@
-import React, { Suspense, createContext, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/navbar/Navbar';
+import { ArchiveContext } from './context/ArchiveContext';
 import pages from './Routes';
 import { IArchive } from './types/types';
 
 
-interface IArchiveContext {
-  archive: IArchive[],
-  setArchive: (val: IArchive[]) => void
-}
 
-export const ArchiveContext = createContext<IArchiveContext>({} as IArchiveContext)
 
 function App() {
   const [archive, setArchive] = useState<IArchive[]>([] as IArchive[])
   return (
     <BrowserRouter>
       <Navbar />
-      <ArchiveContext.Provider value={{ archive, setArchive }}>
-        <main>
-          <Suspense fallback={<>Loading...</>}>
+
+      <main>
+        <Suspense fallback={<>Loading...</>}>
+          <ArchiveContext.Provider value={{ archive, setArchive }}>
             <Routes>
+
               <Route path="*" element={<Navigate replace to="/" />} />
               {pages.map(({ path, Element }) => {
                 return (
                   <Route key={path} path={path} element={<Element />} />
                 )
               })}
+
             </Routes>
-          </Suspense>
-        </main>
-      </ArchiveContext.Provider>
+          </ArchiveContext.Provider>
+        </Suspense>
+      </main>
+
     </BrowserRouter >
   );
 }

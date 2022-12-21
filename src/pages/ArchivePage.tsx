@@ -1,12 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
+import { ArchiveTable } from '../components/archive-table/ArchiveTable'
+import { ArchiveContext } from '../context/ArchiveContext'
 
 
 
 const ArchivePage: FC = () => {
     return (
-        <div>
-            Archive
-        </div>
+        <ArchiveTable />
     )
 }
 

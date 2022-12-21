@@ -110,6 +110,11 @@ hr {
     border: none;
     border-top: solid 1.5px $alarm-color;
   }
+
+  &[color='border'] {
+    border: none;
+    border-top: solid 2.5px $hide-text-color;
+  }
 }
 
 

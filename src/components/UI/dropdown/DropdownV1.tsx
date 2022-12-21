@@ -4,19 +4,18 @@ import { HandySvg } from 'handy-svg'
 import iArrow from '../../../source/icons/bxs-down-arrow.svg'
 
 
-
 interface IDropdownV1 {
     options: any[];
     value: string;
     onChange?: (option: any) => void
 }
 
+// Выпадающий список
 export const DropdownV1: FC<IDropdownV1> = ({ options, value, onChange }) => {
     // видимость выпадающего списка
     const [active, setActive] = useState<boolean>(false)
-    // выбранная опция
-    // const [select, setSelect] = useState<string>(options[0])
 
+    // стили - видимость списка
     const styleContent = [style.content]
     const styleIcon = [style.icon]
     if (active) {
@@ -44,7 +43,6 @@ export const DropdownV1: FC<IDropdownV1> = ({ options, value, onChange }) => {
                             key={idx}
                             onClick={() => {
                                 setActive(!active)
-                                // setSelect(option)
                                 onChange?.(option)
                             }}
                         >

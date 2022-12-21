@@ -9,7 +9,9 @@ interface IPropsPrice extends ICurrency {
     handler?: (type: string, name: string, price: number) => void;
 }
 
-export const Price: FC<IPropsPrice> = ({ name, price, coef, handler }) => {
+
+// Компонент отображение цены выбранной валюты (кнопки вызова модального окна)
+export const Price: FC<IPropsPrice> = ({ instrument, price, coef, handler }) => {
     // инициализация симулятора изменения цены
     const [sim, setSim] = useState<number>(0)
 
@@ -19,19 +21,23 @@ export const Price: FC<IPropsPrice> = ({ name, price, coef, handler }) => {
 
     // движок симулятора - каждые 3сек происходит изменение цены
     useSchedular(() => {
-        setSim(Math.random() * (coef))
+        let randomNumber = Math.random()
+
+        if (randomNumber >= 0.5) setSim(randomNumber * (coef))
+        else setSim(randomNumber * (-coef))
+
     }, 3000)
 
     // сброс симулятора при смене валюты
-    useEffect(() => { setSim(0) }, [name])
+    useEffect(() => { setSim(0) }, [instrument])
 
     return (
         <div className={style.container}>
-
+            {/* компонент покупки валюты */}
             <div
                 className={style.btn}
                 color='green'
-                onClick={() => { handler?.('Buy', name, buyPrice) }}
+                onClick={() => { handler?.('Buy', instrument, buyPrice) }}
             >
                 <PriceCard
                     name='BUY'
@@ -39,11 +45,11 @@ export const Price: FC<IPropsPrice> = ({ name, price, coef, handler }) => {
                     color={'#1ED760'}
                 />
             </div>
-
+            {/* компонент продажи валюты */}
             <div
                 className={style.btn}
                 color='red'
-                onClick={() => { handler?.('Sell', name, sellPrice) }}
+                onClick={() => { handler?.('Sell', instrument, sellPrice) }}
             >
                 <PriceCard
                     name='SELL'

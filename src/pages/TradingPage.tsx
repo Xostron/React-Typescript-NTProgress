@@ -10,7 +10,9 @@ const TradingPage: FC = () => {
 
     return (
         <div className={style.container}>
+            {/* Часы */}
             <TimerUTC />
+            {/* Тикер */}
             <Ticker />
         </div>
     )

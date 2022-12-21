@@ -1,0 +1,30 @@
+@import '../../style/color.scss';
+
+.container {
+    display: grid;
+    font-size: 1rem;
+
+
+    .row {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 8% 22% 20% 25% auto;
+        // background-color: aquamarine;
+        grid-template-rows: 2rem;
+    }
+
+    .cell {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        ;
+
+        &[color='buy'] {
+            color: $background-color;
+        }
+
+        &[color='sell'] {
+            color: $alarm-color;
+        }
+    }
+}
