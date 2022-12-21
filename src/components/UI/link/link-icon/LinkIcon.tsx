@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { HandySvg } from 'handy-svg'
-import styleMenu from './LinkIconMenu.module.scss'
-import styleSt from './LinkIconSt.module.scss'
+import style from './LinkIcon.module.scss'
 import { ILink } from '../../../../types/types'
 
 
@@ -14,22 +13,6 @@ interface ILinkIconProps {
 }
 // types<ILinkIconProps>
 export const LinkIcon: FC<ILinkIconProps> = ({ item }) => {
-
-
-    //инициализация стиля
-    let style = styleSt
-    switch (item.type) {
-        case 'menu' || 'navbar':
-            style = styleMenu
-            break
-
-        case 'st' || 'standart':
-            style = styleSt
-            break
-
-        default:
-            style = styleSt
-    }
 
     // подстветка активного состояния для NavLink
     const activeStyle = ({ isActive }: { isActive: boolean }): string => {

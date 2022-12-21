@@ -1,0 +1,90 @@
+@import '../../../style/color.scss';
+
+.dropdown {
+    position: relative;
+    width: 250px;
+    height: fit-content;
+    font-size: 1.5rem;
+
+
+    .default {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .name {
+            padding: 4px;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            fill: $background-color;
+            transition: transform .5s ease;
+
+            &.activeIcon {
+                transform: rotateX(-180deg);
+            }
+        }
+    }
+
+
+}
+
+
+.content {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background: $bacground-base-color;
+    box-shadow: 3px 3px 10px 6px rgba(245, 245, 245, 0.06);
+    font-weight: 400;
+    color: #333;
+    height: calc(38px * 0);
+    overflow-y: auto;
+    transition-property: visibility, opacity, transform, height;
+    transition-duration: .5s;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-38px);
+
+    &.activeContent {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        height: calc(38px * 4);
+    }
+
+    .item {
+        padding: 4px;
+        cursor: pointer;
+        // transition: all 2s;
+
+        &:hover {
+            background: #e0e0e0;
+        }
+    }
+}
+
+/***************** CUSTOM SCROLL ***********************/
+/* ширина scrollbar */
+.content::-webkit-scrollbar {
+    width: .3rem;
+
+}
+
+/* цвет дорожки */
+.content::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    /* background-color: #f9f9fd; */
+    border-radius: 0px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    /* закругления плашки */
+    border-radius: 10px;
+    /* цвет плашки */
+    background: linear-gradient(180deg, $hide-text-color, $background-color);
+    /* border: 3px solid orange; */
+}

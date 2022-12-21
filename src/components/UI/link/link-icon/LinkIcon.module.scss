@@ -5,27 +5,28 @@
     display: flex;
     text-decoration: none;
     cursor: pointer;
-    padding: 16px;
+    padding: 8px;
     align-items: center;
-    color: $background-color;
+    color: $dark-background-color;
+    // background-color: ;
 
     .navText {
         margin-left: 8px;
     }
 
     .navIcon {
-        fill: $regular-text-color;
+        fill: $dark-background-color;
     }
 
     &:hover {
         transition: color, fill .2s ease-in-out;
+        color: $bold-text-color;
 
         .navIcon {
-            fill: $ui-color;
+            fill: $bold-text-color;
         }
     }
 }
-
 
 .myLink.active {
     color: $ui-color;

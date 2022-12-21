@@ -1,23 +1,29 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/navbar/Navbar';
-import { ArchivePage } from './pages/ArchivуPage';
-import { TradingPage } from './pages/TradingPage';
-
+import pages from './Routes';
 
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+
       <main>
-        <Routes>
-          <Route element={<TradingPage />} path='/' />
-          <Route element={<ArchivePage />} path='/archive' />
-        </Routes>
+        <Suspense fallback={<>Loading...</>}>
+          <Routes>
+            <Route path="*" element={<Navigate replace to="/" />} />
+            {pages.map(({ path, Element }) => {
+              return (
+                <Route key={path} path={path} element={<Element />} />
+              )
+            })}
+          </Routes>
+        </Suspense>
       </main>
-    </BrowserRouter>
+
+    </BrowserRouter >
   );
 }
 
-export default App;
+export default App

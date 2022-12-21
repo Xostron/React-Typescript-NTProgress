@@ -2,10 +2,12 @@ import React, { FC } from 'react'
 
 
 
-export const ArchivePage: FC = () => {
+const ArchivePage: FC = () => {
     return (
         <div>
-            321
+            Archive
         </div>
     )
 }
+
+export default ArchivePage

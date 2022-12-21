@@ -32,6 +32,7 @@ html,
 body {
   overflow-x: hidden;
   max-height: 100vh;
+
 }
 
 body {
@@ -41,10 +42,11 @@ body {
 
 /**************VIEW ROUTES DESKTOP****************/
 main {
-  padding-top: 50px;
+  padding-top: 60px;
+  padding-bottom: 0;
   max-width: 85vw;
   margin: 0 auto;
-  // background-color: #8d7f02;
+  height: calc(100vh - 50px);
 }
 
 
