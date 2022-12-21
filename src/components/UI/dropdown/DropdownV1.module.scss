@@ -5,37 +5,43 @@
     width: 250px;
     height: fit-content;
     font-size: 1.5rem;
+    border: 1px solid $hide-text-color;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
 
+    &:hover {
+        .icon {
+            fill: $background-color;
+        }
+    }
 
     .default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        .name {
-            padding: 4px;
-        }
-
-        .icon {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            fill: $background-color;
-            transition: transform .5s ease;
-
-            &.activeIcon {
-                transform: rotateX(-180deg);
-            }
-        }
     }
 
+    .icon {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        fill: $dark-background-color;
+        transition: all .5s ease;
+
+        &.activeIcon {
+            transform: rotateX(-180deg);
+        }
+    }
 
 }
 
 
 .content {
+
     position: absolute;
     top: 100%;
+    left: 0;
     width: 100%;
     background: $bacground-base-color;
     box-shadow: 3px 3px 10px 6px rgba(245, 245, 245, 0.06);
@@ -47,19 +53,19 @@
     transition-duration: .5s;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-38px);
+    transform: translateY(-49px);
 
     &.activeContent {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
-        height: calc(38px * 4);
+        transform: translateY(8px);
+        height: calc(49px * 4);
     }
 
     .item {
-        padding: 4px;
+        padding: 8px;
         cursor: pointer;
-        // transition: all 2s;
+        border-radius: 10px;
 
         &:hover {
             background: #e0e0e0;

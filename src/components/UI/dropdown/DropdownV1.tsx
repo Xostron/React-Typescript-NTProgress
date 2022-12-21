@@ -6,13 +6,17 @@ import iArrow from '../../../source/icons/bxs-down-arrow.svg'
 
 
 interface IDropdownV1 {
-    options: string[]
-    select: string,
-    setSelect: (select: string) => void
+    options: any[];
+    value: string;
+    onChange?: (option: any) => void
 }
 
-export const DropdownV1: FC<IDropdownV1> = ({ options, select, setSelect }) => {
+export const DropdownV1: FC<IDropdownV1> = ({ options, value, onChange }) => {
+    // видимость выпадающего списка
     const [active, setActive] = useState<boolean>(false)
+    // выбранная опция
+    // const [select, setSelect] = useState<string>(options[0])
+
     const styleContent = [style.content]
     const styleIcon = [style.icon]
     if (active) {
@@ -23,24 +27,25 @@ export const DropdownV1: FC<IDropdownV1> = ({ options, select, setSelect }) => {
     return (
 
         <div className={style.dropdown}>
-            {/* display default value + icon picker */}
+            {/* видимая часть селектора */}
             <div className={style.default}
                 onClick={() => setActive(!active)}
             >
-                <span className={style.name}>{select}</span>
+                <span className={style.name}>{value}</span>
                 <span style={{ width: '16px' }}></span>
                 <HandySvg className={styleIcon.join(' ')} src={iArrow} />
             </div>
 
-            {/* dropdown list */}
+            {/* выпадающий список*/}
             {<div className={styleContent.join(' ')}>
                 {
-                    options.filter((val) => val !== select).map((option, idx) =>
+                    options.filter((val) => val !== value).map((option, idx) =>
                         <div className={style.item}
                             key={idx}
                             onClick={() => {
-                                setSelect(option)
                                 setActive(!active)
+                                // setSelect(option)
+                                onChange?.(option)
                             }}
                         >
                             {option}

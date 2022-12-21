@@ -1,0 +1,20 @@
+@import '../../../style/color.scss';
+
+.container {
+    display: flex;
+    gap: 2rem;
+
+    .btn[color] {
+        cursor: pointer;
+
+        &:hover[color='green'] {
+            background-color: #1ed75f1c;
+            border-radius: 10px;
+        }
+
+        &:hover[color='red'] {
+            background-color: #e03c3021;
+            border-radius: 10px;
+        }
+    }
+}
