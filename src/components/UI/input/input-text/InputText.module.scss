@@ -1,0 +1,23 @@
+@import '../../../../style/color.scss';
+@import '../../../../style/layout.scss';
+
+.container {
+
+
+    .myInput {
+        display: flex;
+        text-align: center;
+        width: 100%;
+        outline: none;
+        padding: .25rem;
+
+        color: $regular-text-color;
+        background-color: transparent;
+        font-size: .85rem;
+        border: none;
+
+        &::placeholder {
+            color: $hide-text-color;
+        }
+    }
+}

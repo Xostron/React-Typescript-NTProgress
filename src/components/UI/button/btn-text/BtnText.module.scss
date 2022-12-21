@@ -1,0 +1,20 @@
+@import '../../../../style/color.less';
+@import '../../../../style/layout.less';
+
+.container {
+    .regular-family;
+    outline: none;
+    border: 1px solid $ui-color;
+    background-color: transparent;
+    border-radius: .5rem;
+    padding: .4rem;
+    cursor: pointer;
+    color: $ui-color;
+    transition-property: font-color, border-color;
+    transition: .4s ease-in-out;
+}
+
+.container:hover {
+    border-color: $bold-text-color;
+    color: $bold-text-color;
+}
